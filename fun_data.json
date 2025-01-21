@@ -1,0 +1,54 @@
+{
+    "dadjokes": [
+        "Why don't skeletons fight each other? They don't have the guts.",
+        "What do you call cheese that isn't yours? Nacho cheese.",
+        "Why can't you give Elsa a balloon? Because she will let it go!",
+        "I'm reading a book on anti-gravity. It's impossible to put down!",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!",
+        "What do you call fake spaghetti? An impasta.",
+        "What did the grape do when it got stepped on? Nothing, but it let out a little wine."
+    ],
+    "compliments": [
+        "You have amazing energy!",
+        "You light up the room!",
+        "You're incredibly talented!",
+        "You have a heart of gold!",
+        "You’re like a ray of sunshine on a rainy day.",
+        "You inspire everyone around you.",
+        "You make the world a better place just by being in it.",
+        "Your smile is contagious!",
+        "You have the courage of your convictions."
+    ],
+    "trivia": {
+        "What is the capital of France?": "Paris",
+        "Who painted the Mona Lisa?": "Leonardo da Vinci",
+        "What is the largest planet in our solar system?": "Jupiter",
+        "What year did the Titanic sink?": "1912",
+        "What is the smallest country in the world?": "Vatican City",
+        "Who wrote 'To Kill a Mockingbird'?": "Harper Lee",
+        "What is the chemical symbol for gold?": "Au",
+        "Which planet is known as the Red Planet?": "Mars",
+        "What is the fastest land animal?": "Cheetah"
+    },
+    "wouldyourather": [
+        "Would you rather fight 100 duck-sized horses or one horse-sized duck?",
+        "Would you rather always be 10 minutes late or 20 minutes early?",
+        "Would you rather have the ability to fly or become invisible?",
+        "Would you rather live without music or live without movies?",
+        "Would you rather have a rewind button or a pause button on your life?",
+        "Would you rather travel to the past or the future?",
+        "Would you rather be able to talk to animals or speak every language in the world?",
+        "Would you rather lose your sight or lose your memories?",
+        "Would you rather never eat pizza again or never eat burgers again?"
+    ],
+    "facts": [
+        "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible.",
+        "Octopuses have three hearts, and their blood is blue.",
+        "Bananas are berries, but strawberries are not.",
+        "A day on Venus is longer than a year on Venus.",
+        "Sharks existed before trees. Sharks have been around for more than 400 million years.",
+        "The Eiffel Tower can be 15 cm taller during the summer due to metal expansion.",
+        "There are more stars in the universe than grains of sand on all the Earth's beaches.",
+        "Sloths can hold their breath longer than dolphins. They can slow their heart rate to hold their breath for up to 40 minutes."
+    ]
+}
