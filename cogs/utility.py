@@ -2,7 +2,7 @@ import asyncio
 import discord
 from discord.ext import commands
 from datetime import datetime
-from utils.data import load_data, save_data
+from utils import load_data, save_data
 
 class Utility(commands.Cog):
     def __init__(self, bot):

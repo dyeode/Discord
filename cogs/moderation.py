@@ -2,7 +2,7 @@ import asyncio
 from datetime import datetime
 import discord
 from discord.ext import commands
-from utils.data import load_data, save_data
+from utils import load_data, save_data
 
 class Moderation(commands.Cog):
     def __init__(self, bot):

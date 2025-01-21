@@ -3,8 +3,7 @@ from discord.ext import commands
 import asyncio
 import json
 
-
-from utils.data import load_config
+from utils import load_config
 config = load_config()
 
 intents = discord.Intents.default()
