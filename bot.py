@@ -1,35 +1,60 @@
 import discord
 from discord.ext import commands
 import asyncio
-import json
-
+import os
 from utils import load_config
+
 config = load_config()
 
-intents = discord.Intents.default()
-intents.messages = True
-intents.guilds = True
-intents.message_content = True
-intents.members = True
+intents = discord.Intents.all()
 
-bot = commands.Bot(command_prefix=config["prefix"], intents=intents, description="A moderation and server management bot.")
+bot = commands.Bot(
+    command_prefix=config.get("prefix", "!"),
+    intents=intents,
+    description="A moderation and server management bot."
+)
 
 @bot.event
 async def on_ready():
-    print(f"Logged in as {bot.user} ({bot.user.id})")
-    print("Bot is ready!")
+    print(f"✅ Logged in as {bot.user} ({bot.user.id})")
+    print("Bot is ready and listening for commands!")
 
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send("You don't have the necessary permissions to execute this command.")
+        await ctx.send("⚠️ You don't have the necessary permissions to execute this command.")
     elif isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send("Please provide all required arguments for this command.")
+        await ctx.send("⚠️ Please provide all required arguments for this command.")
+    elif isinstance(error, commands.CommandNotFound):
+        await ctx.send("❓ Command not found. Use `!help` to see available commands.")
     else:
-        await ctx.send(f"An error occurred: {error}")
+        await ctx.send("⚠️ An unexpected error occurred. Please contact the admin.")
+        print(f"Unexpected error: {error}")
+
+async def load_all_cogs():
+    cogs_dir = "./cogs"
+    for filename in os.listdir(cogs_dir):
+        if filename.endswith(".py"):
+            cog_name = filename[:-3]
+            if f"cogs.{cog_name}" in bot.extensions:
+                print(f"⚠️ Cog `{cog_name}` is already loaded. Skipping.")
+                continue
+            try:
+                await bot.load_extension(f"cogs.{cog_name}")
+                print(f"✅ Loaded cog: {cog_name}")
+            except commands.errors.CommandRegistrationError as e:
+                print(f"⚠️ Failed to load cog `{cog_name}`: Duplicate command name.")
+            except Exception as e:
+                print(f"⚠️ Failed to load cog `{cog_name}`: {e}")
 
 async def main():
-    await bot.load_extension("cogs.loader")
-    await bot.start(config["token"])
+    print("Starting bot...")
+    await load_all_cogs()
+    token = config.get("token")
+    if not token:
+        print("⚠️ Token is missing in the configuration.")
+        return
+    await bot.start(token)
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
