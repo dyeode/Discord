@@ -15,12 +15,12 @@ bot = commands.Bot(
 )
 
 @bot.event
-async def on_ready():
+async def on_ready(): # When the bot is ready to be used (logged in)
     print(f"✅ Logged in as {bot.user} ({bot.user.id})")
     print("Bot is ready and listening for commands!")
 
 @bot.event
-async def on_command_error(ctx, error):
+async def on_command_error(ctx, error): # When a command has an error or is not found (command not found)
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("⚠️ You don't have the necessary permissions to execute this command.")
     elif isinstance(error, commands.MissingRequiredArgument):
@@ -31,7 +31,7 @@ async def on_command_error(ctx, error):
         await ctx.send("⚠️ An unexpected error occurred. Please contact the admin.")
         print(f"Unexpected error: {error}")
 
-async def load_all_cogs():
+async def load_all_cogs(): # Load all cogs in the cogs directory when the bot starts up (loads all commands)
     cogs_dir = "./cogs"
     for filename in os.listdir(cogs_dir):
         if filename.endswith(".py"):
@@ -47,7 +47,7 @@ async def load_all_cogs():
             except Exception as e:
                 print(f"⚠️ Failed to load cog `{cog_name}`: {e}")
 
-async def main():
+async def main(): # Main function to start the bot and load all cogs (commands)
     print("Starting bot...")
     await load_all_cogs()
     token = config.get("token")
@@ -56,5 +56,5 @@ async def main():
         return
     await bot.start(token)
 
-if __name__ == "__main__":
+if __name__ == "__main__": # Run the main function if the script is executed directly (not imported)
     asyncio.run(main())
